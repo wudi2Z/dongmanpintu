@@ -31,15 +31,26 @@ public class PictureFrame extends JFrame {
         //打乱数组
 //        daluan(datas);
 
+        //创建一个面板，用于存放图片
+        JPanel imagePanel = new JPanel();
+        imagePanel.setBounds(150,114,360,360);
+        imagePanel.setLayout(null);
+
 
         //绘制数组
         for (int i = 0; i < datas.length; i++) {
-            for (int j = 0; j < datas.length; j++) {
+            for (int j = 0; j < datas[i].length; j++) {
                 JLabel jLabel =new JLabel(new ImageIcon("images/"+datas[i][j]+".png"));
                 jLabel.setBounds(j*90,i*90,90,90);
                 this.add(jLabel);
             }
         }
+        this.add(imagePanel);
+
+        //参照图
+        JLabel canZhaoTuLabel=new JLabel(new ImageIcon("images/canzhaotu.png"));
+        canZhaoTuLabel.setBounds(574,114,122,121);
+        this.add(canZhaoTuLabel);
     }
 
     public static void daluan(int[][] datas){
