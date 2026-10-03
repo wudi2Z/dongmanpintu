@@ -184,7 +184,21 @@ public class PictureFrame extends JFrame {
         chongZhiButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("点击了重置按钮");
+                datas = new int[][]{
+                        {1, 2, 3, 4},
+                        {5, 6, 7, 8},
+                        {9, 10, 11, 12},
+                        {13, 14, 15, 0} //如果用户点击重置,目的是重新开始游戏,加入0号图片
+                };
+                //打乱数组
+                randomDate();
+                //重绘
+                rePaintView();
+                //设置上左下右按钮生效
+                shangButton.setEnabled(true);
+                zuoButton.setEnabled(true);
+                xiaButton.setEnabled(true);
+                youButton.setEnabled(true);
             }
         });
     }
@@ -193,7 +207,7 @@ public class PictureFrame extends JFrame {
     public PictureFrame() {
         initFrame();
         //在图片绘制前打乱窗口数组
-        randomDate(datas);
+        randomDate();
         paintView();//绘制视图
         addButtonEvent();//添加按钮事件
         setVisible(true);//设置窗口可见
@@ -272,7 +286,7 @@ public class PictureFrame extends JFrame {
     }
 
 
-    public void randomDate(int[][] datas){
+    public void randomDate(){
         Random r=new Random();
         for (int i = 0; i < datas.length; i++) {
             for (int j = 0; j < datas[i].length; j++) {
